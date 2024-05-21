@@ -2,7 +2,7 @@
 
 ## Setup
 
-### Install postgres, nginx and redis
+### Install postgres
 `brew install postgresql`
 
 #### Setup virtual environment
