@@ -39,9 +39,9 @@ class CustomQuery(Query):
         :param kwargs: The filter parameters
         :return: The filtered query
         """
-        if g.organization_id is None:
-            raise Exception('Organization ID is not set')
-        kwargs['organization_id'] = g.organization_id
+        if g.client_id is None:
+            raise Exception('Client ID is not set')
+        kwargs['client_id'] = g.client_id
         return super(CustomQuery, self).filter_by(**kwargs)
 
     # This method is used to get all the records of the query filtered by the organization_id
@@ -51,9 +51,9 @@ class CustomQuery(Query):
         :param kwargs: The filter parameters
         :return: The filtered query
         """
-        if g.organization_id is None:
-            raise Exception('Organization ID is not set')
-        kwargs['organization_id'] = g.organization_id
+        if g.client_id is None:
+            raise Exception('Client ID is not set')
+        kwargs['client_id'] = g.client_id
         return super(CustomQuery, self).filter_by(**kwargs)
 
     # This method is used to insert a record into the query with the organization_id
@@ -64,9 +64,9 @@ class CustomQuery(Query):
         :param kwargs: The insert parameters
         :return: The inserted record
         """
-        if g.organization_id is None:
-            raise Exception('Organization ID is not set')
-        values['organization_id'] = g.organization_id
+        if g.client_id is None:
+            raise Exception('Client ID is not set')
+        values['client_id'] = g.client_id
         return super(CustomQuery, self).insert(values, **kwargs)
 
     # This method is used to filter the query by the organization_id and other criteria
@@ -76,15 +76,15 @@ class CustomQuery(Query):
         :param criterion: The filter criteria
         :return: The filtered query
         """
-        if g.organization_id is None:
-            raise Exception('Organization ID is not set')
+        if g.client_id is None:
+            raise Exception('Client ID is not set')
         columns = self.column_descriptions
         entity = None
         for column in columns:
             if hasattr(column['entity'], 'organization_id'):
                 entity = column['entity']
                 break
-        criterion += (entity.organization_id == g.organization_id,)
+        criterion += (entity.client_id == g.client_id,)
         return super().filter(*criterion)
 
 
