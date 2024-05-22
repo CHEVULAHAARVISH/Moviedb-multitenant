@@ -126,6 +126,7 @@ def refresh_token_func():
 
 # This route is used to display a welcome message
 @app.route('/', methods=['GET'])
+@jwt_required()
 def home():
     """
     Route to display a welcome message.
